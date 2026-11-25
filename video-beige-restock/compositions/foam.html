@@ -1,0 +1,56 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 0 20px 4px; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #fo-t { top: 400px; font-size: 92px; }
+    #fo-ill { top: 540px; height: 170px; }
+    #fo-ill svg { display: block; margin: 0 auto; width: 420px; height: 170px; overflow: visible; }
+    #fo-pillw { top: 740px; }
+  </style>
+  <div id="root" data-composition-id="foam" data-width="1080" data-height="1920">
+    <div id="fo-t" class="blk anton">FOAM <span class="hl">TEBAL</span></div>
+    <div id="fo-ill" class="blk" data-layout-allow-overflow><svg viewBox="0 0 420 170">
+      <rect x="40" y="20" width="300" height="26" rx="10" fill="rgba(255,255,255,.55)"/>
+      <rect id="fo-foam" x="40" y="50" width="300" height="100" rx="18" fill="#EADFCB" stroke="#fff" stroke-width="5"/>
+      <g id="fo-arrow" stroke="#E8322B" stroke-width="7" stroke-linecap="round" fill="none"><path d="M375 56v88M362 70l13-14 13 14M362 130l13 14 13-14"/></g>
+    </svg></div>
+    <div id="fo-pillw" class="blk"><span id="fo-pill" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Rasa empuk</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 10.3 s. "foam" 10.66 (0.36); "tebal" 11.40 (1.10); "empuk" 13.22 (2.92)
+    tl.fromTo("#fo-t", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.36);
+    tl.fromTo("#fo-ill", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 0.6);
+    tl.fromTo("#fo-foam", { attr: { height: 40, y: 80 } }, { attr: { height: 100, y: 50 }, duration: 0.45, ease: "back.out(1.6)" }, 1.1);
+    tl.fromTo("#fo-arrow", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.3);
+    tl.fromTo("#fo-pill", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.92);
+    tl.to(["#fo-t", "#fo-ill", "#fo-pillw"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 3.23);
+    window.__timelines["foam"] = tl;
+  </script>
+</template>
