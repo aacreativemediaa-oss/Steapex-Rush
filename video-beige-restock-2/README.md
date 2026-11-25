@@ -1,6 +1,6 @@
 # Warna Beige Bila Nak Restock? — Steapex (HyperFrames, Format A dengan VO)
 
-- `index.html` — root: 10 klip, 8 scene grafik, caption, overlay (bar progres + kilatan putih), VO, SFX
+- `index.html` — root: 6 klip (footage penuh, tanpa zoom), 8 scene grafik, caption, overlay (bar progres + kilatan putih), VO, SFX
 - `compositions/` — `hook`, `news`, `size`, `stock`, `colour`, `foam`, `comfort`, `cta`, `captions`, `overlay`
 - `assets/vo/new-vo.wav` — VO asal (dari `New VO`, tidak diubah)
 - `transcript.json` — transkrip Whisper large-v3 dengan masa perkataan
