@@ -83,29 +83,7 @@
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
-      // Every clip: quick zoom-in 1.18 -> 1.04 in 0.35 s, then a slow push to the cut
-      tl.fromTo("#f01", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 0.0);
-      tl.to("#f01", { scale: 1.1, duration: 2.75, ease: "none" }, 0.35);
-      tl.fromTo("#f02", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 3.1);
-      tl.to("#f02", { scale: 1.1, duration: 2.75, ease: "none" }, 3.45);
-      tl.fromTo("#f03", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 6.2);
-      tl.to("#f03", { scale: 1.1, duration: 1.95, ease: "none" }, 6.55);
-      tl.fromTo("#f04", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 8.5);
-      tl.to("#f04", { scale: 1.1, duration: 2.25, ease: "none" }, 8.85);
-      tl.fromTo("#f05", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 11.1);
-      tl.to("#f05", { scale: 1.1, duration: 2.35, ease: "none" }, 11.45);
-      tl.fromTo("#f06", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 13.8);
-      tl.to("#f06", { scale: 1.1, duration: 2.85, ease: "none" }, 14.15);
-      tl.fromTo("#f07", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 17.0);
-      tl.to("#f07", { scale: 1.1, duration: 1.05, ease: "none" }, 17.35);
-      tl.fromTo("#f08", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 18.4);
-      tl.to("#f08", { scale: 1.1, duration: 1.75, ease: "none" }, 18.75);
-      tl.fromTo("#f09", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 20.5);
-      tl.to("#f09", { scale: 1.1, duration: 3.15, ease: "none" }, 20.85);
-      tl.fromTo("#f10", { scale: 1.18 }, { scale: 1.04, duration: 0.35, ease: "power3.out" }, 24.0);
-      tl.to("#f10", { scale: 1.1, duration: 4.5, ease: "none" }, 24.35);
-      // Hook impact: screen shake
-      [[22, -12], [-18, 10], [12, 14], [-10, -8], [6, 5], [-3, -2], [0, 0]].forEach(([x, y], i) => tl.to("#f01", { x, y, duration: 0.05, ease: "none" }, 0.03 + i * 0.05));
+      // Footage plays full frame: no zoom, no push (per user request)
       window.__timelines["main"] = tl;
     </script>
   </body>
