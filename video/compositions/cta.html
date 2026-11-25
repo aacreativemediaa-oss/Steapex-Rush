@@ -1,0 +1,64 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    .w { display: inline-block; }
+    .disp { font-family: "Oswald", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.02; letter-spacing: 0.005em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .body { font-family: "Montserrat", sans-serif; font-weight: 800; line-height: 1.18;
+      text-shadow: 0 4px 18px rgba(0,0,0,.6), 0 2px 3px rgba(0,0,0,.65); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 2px 22px 6px; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .badge { position: absolute; top: 300px; left: 384px; width: 240px; height: 66px; border-radius: 33px; background: #fff; color: var(--red);
+      font-family: "Oswald", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .06em; line-height: 66px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .chip { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px;
+      padding: 12px 26px 14px; border-radius: 40px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .chip svg { width: 34px; height: 34px; vertical-align: -6px; margin-right: 8px; }
+    #c-color { top: 310px; }
+    #c-c1 { font-size: 62px; }
+    #c-c2 { font-size: 150px; color: var(--beige); margin-top: 2px; }
+    #c-sw { display: inline-block; width: 96px; height: 96px; border-radius: 48px; background: var(--beige); border: 7px solid #fff;
+      vertical-align: 8px; margin-right: 22px; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    #c-stamp { top: 560px; height: 150px; }
+    #c-st { display: inline-block; background: var(--red); color: #fff; font-family: "Oswald"; font-weight: 700; font-size: 104px; line-height: 1.1;
+      padding: 4px 34px 10px; border-radius: 16px; border: 6px solid #fff; text-transform: uppercase; box-shadow: 0 16px 44px rgba(0,0,0,.45); }
+    #c-grab { top: 752px; }
+    #c-btn { display: inline-block; background: #fff; color: var(--dark); border-radius: 28px; padding: 22px 34px 24px; box-shadow: 0 14px 40px rgba(0,0,0,.4); }
+    #c-btn .g1 { font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.15; }
+    #c-btn .g2 { font-family: "Oswald"; font-weight: 700; font-size: 72px; line-height: 1.05; color: var(--red); text-transform: uppercase; }
+  </style>
+  <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+    <div id="c-color" class="blk">
+      <span id="c-c1" class="ln body">Warna</span>
+      <span id="c-c2" class="ln disp"><span id="c-sw"></span>BEIGE</span>
+    </div>
+    <div id="c-stamp" class="blk"><span id="c-st">DAH RESTOCK!</span></div>
+    <div id="c-grab" class="blk">
+      <div id="c-btn">
+        <div class="g1">Grab cepat sebelum</div>
+        <div class="g2">sold out lagi!</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // Colour reveal (0.1)
+    tl.fromTo("#c-c1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.08);
+    tl.fromTo("#c-c2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.18);
+    tl.fromTo("#c-sw", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.3);
+
+    // RESTOCK stamp slams on the impact (0.5)
+    tl.fromTo("#c-st", { opacity: 0, scale: 2.4, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.28, ease: "expo.out" }, 0.53);
+
+    // Grab button (2.2) — then holds still to the end
+    tl.fromTo("#c-btn", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 2.2);
+
+    window.__timelines["cta"] = tl;
+  </script>
+</template>

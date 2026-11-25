@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #0d0d0d; }
+      #root { position: relative; width: 100%; height: 100%; overflow: hidden; }
+      .frame { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; }
+      .frame video { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; object-fit: cover; }
+      #grade { position: absolute; inset: 0; z-index: 40; pointer-events: none;
+        background: linear-gradient(180deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.30) 24%, rgba(0,0,0,0) 48%, rgba(0,0,0,0) 70%, rgba(0,0,0,.30) 100%); }
+      .scene { z-index: 50; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="55.0" data-width="1080" data-height="1920" data-fps="30">
+      <!-- Footage: one wrapper per shot; the <video> is timed, the wrapper carries punch-ins -->
+      <div id="f01" class="frame" style="z-index:1"><video id="v01" class="clip" src="assets/footage/knee-pain.mp4" data-start="0.0" data-duration="2.0" data-media-start="1.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f02" class="frame" style="z-index:2"><video id="v02" class="clip" src="assets/footage/beige-indoor.mp4" data-start="2.0" data-duration="1.5" data-media-start="33.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f03" class="frame" style="z-index:3"><video id="v03" class="clip" src="assets/footage/beige-track.mp4" data-start="3.5" data-duration="1.5" data-media-start="40.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f04" class="frame" style="z-index:4"><video id="v04" class="clip" src="assets/footage/beige-indoor.mp4" data-start="5.0" data-duration="3.0" data-media-start="46.5" data-track-index="0" muted playsinline></video></div>
+      <div id="f05" class="frame" style="z-index:5"><video id="v05" class="clip" src="assets/footage/beige-track.mp4" data-start="8.0" data-duration="3.0" data-media-start="44.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f06" class="frame" style="z-index:6"><video id="v06" class="clip" src="assets/footage/beige-indoor.mp4" data-start="11.0" data-duration="5.0" data-media-start="36.6" data-track-index="0" muted playsinline></video></div>
+      <div id="f07" class="frame" style="z-index:7"><video id="v07" class="clip" src="assets/footage/knee-pain.mp4" data-start="16.0" data-duration="2.5" data-media-start="5.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f08" class="frame" style="z-index:8"><video id="v08" class="clip" src="assets/footage/workout.mp4" data-start="18.5" data-duration="7.0" data-media-start="17.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f09" class="frame" style="z-index:9"><video id="v09" class="clip" src="assets/footage/foot-pain.mp4" data-start="25.5" data-duration="2.5" data-media-start="0.5" data-track-index="0" muted playsinline></video></div>
+      <div id="f10" class="frame" style="z-index:10"><video id="v10" class="clip" src="assets/footage/toe-pain.mp4" data-start="28.0" data-duration="1.5" data-media-start="1.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f11" class="frame" style="z-index:11"><video id="v11" class="clip" src="assets/footage/beige-unbox.mp4" data-start="29.5" data-duration="2.5" data-media-start="3.7" data-track-index="0" muted playsinline></video></div>
+      <div id="f12" class="frame" style="z-index:12"><video id="v12" class="clip" src="assets/footage/beige-track.mp4" data-start="32.0" data-duration="3.0" data-media-start="46.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f13" class="frame" style="z-index:13"><video id="v13" class="clip" src="assets/footage/beige-unbox.mp4" data-start="35.0" data-duration="2.0" data-media-start="11.6" data-track-index="0" muted playsinline></video></div>
+      <div id="f14" class="frame" style="z-index:14"><video id="v14" class="clip" src="assets/footage/beige-indoor.mp4" data-start="37.0" data-duration="2.5" data-media-start="17.5" data-track-index="0" muted playsinline></video></div>
+      <div id="f15" class="frame" style="z-index:15"><video id="v15" class="clip" src="assets/footage/beige-unbox.mp4" data-start="39.5" data-duration="2.5" data-media-start="72.6" data-track-index="0" muted playsinline></video></div>
+      <div id="f16" class="frame" style="z-index:16"><video id="v16" class="clip" src="assets/footage/beige-track.mp4" data-start="42.0" data-duration="3.0" data-media-start="12.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f17" class="frame" style="z-index:17"><video id="v17" class="clip" src="assets/footage/beige-indoor.mp4" data-start="45.0" data-duration="3.5" data-media-start="24.0" data-track-index="0" muted playsinline></video></div>
+      <div id="f18" class="frame" style="z-index:18"><video id="v18" class="clip" src="assets/footage/beige-unbox.mp4" data-start="48.5" data-duration="2.5" data-media-start="74.5" data-track-index="0" muted playsinline></video></div>
+      <div id="f19" class="frame" style="z-index:19"><video id="v19" class="clip" src="assets/footage/beige-unbox.mp4" data-start="51.0" data-duration="4.0" data-media-start="115.2" data-track-index="0" muted playsinline></video></div>
+      <div id="grade" data-layout-ignore></div>
+      <!-- Graphics: one transparent scene per beat -->
+      <div id="hook" class="scene" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="tip1" class="scene" data-composition-id="tip1" data-composition-src="compositions/tip1.html" data-start="5" data-duration="11" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="tip2" class="scene" data-composition-id="tip2" data-composition-src="compositions/tip2.html" data-start="16" data-duration="9.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="tip3" class="scene" data-composition-id="tip3" data-composition-src="compositions/tip3.html" data-start="25.5" data-duration="9.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="usp" class="scene" data-composition-id="usp" data-composition-src="compositions/usp.html" data-start="35" data-duration="13.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <div id="cta" class="scene" data-composition-id="cta" data-composition-src="compositions/cta.html" data-start="48.5" data-duration="6.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+      <!-- Music bed: "Path To Victory" by UNIVERSFIELD (CC BY 4.0), entered at its full-energy section -->
+      <audio id="music" class="clip" src="assets/music/path-to-victory.mp3" data-start="0" data-duration="55.0" data-media-start="17.24" data-volume="0.5" data-fade-out="1.6" data-track-index="2"></audio>
+      <!-- Sound effects -->
+      <audio id="sx-impact-hook" class="clip" src="assets/sfx/impact.mp3" data-start="0.0" data-duration="2.2" data-volume="0.55" data-track-index="3"></audio>
+      <audio id="sx-pop-save" class="clip" src="assets/sfx/pop.mp3" data-start="2.43" data-duration="0.5" data-volume="0.8" data-track-index="3"></audio>
+      <audio id="sx-shutter-save" class="clip" src="assets/sfx/shutter.mp3" data-start="2.83" data-duration="0.34" data-volume="0.45" data-track-index="4"></audio>
+      <audio id="sx-whoosh-t1" class="clip" src="assets/sfx/whoosh.mp3" data-start="4.87" data-duration="0.57" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-pop-timer" class="clip" src="assets/sfx/pop.mp3" data-start="8.23" data-duration="0.5" data-volume="0.7" data-track-index="3"></audio>
+      <audio id="sx-heart" class="clip" src="assets/sfx/heartbeat.mp3" data-start="11.0" data-duration="4.9" data-volume="0.75" data-track-index="3" data-fade-in="0.4" data-fade-out="0.8"></audio>
+      <audio id="sx-pop-zone" class="clip" src="assets/sfx/pop.mp3" data-start="12.93" data-duration="0.5" data-volume="0.75" data-track-index="4"></audio>
+      <audio id="sx-swoosh-t2" class="clip" src="assets/sfx/swoosh.mp3" data-start="15.98" data-duration="0.36" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-pop-chip1" class="clip" src="assets/sfx/pop.mp3" data-start="22.23" data-duration="0.5" data-volume="0.7" data-track-index="3"></audio>
+      <audio id="sx-click-chip2" class="clip" src="assets/sfx/click-soft.mp3" data-start="22.58" data-duration="0.36" data-volume="0.9" data-track-index="4"></audio>
+      <audio id="sx-whoosh-t3" class="clip" src="assets/sfx/whoosh.mp3" data-start="25.37" data-duration="0.57" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-swoosh-usp" class="clip" src="assets/sfx/swoosh.mp3" data-start="34.98" data-duration="0.36" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-pop-usp1" class="clip" src="assets/sfx/pop.mp3" data-start="37.13" data-duration="0.5" data-volume="0.7" data-track-index="3"></audio>
+      <audio id="sx-pop-usp2" class="clip" src="assets/sfx/pop.mp3" data-start="42.13" data-duration="0.5" data-volume="0.7" data-track-index="3"></audio>
+      <audio id="sx-click-c1" class="clip" src="assets/sfx/click-soft.mp3" data-start="45.6" data-duration="0.36" data-volume="0.9" data-track-index="3"></audio>
+      <audio id="sx-pop-c2" class="clip" src="assets/sfx/pop.mp3" data-start="45.8" data-duration="0.5" data-volume="0.6" data-track-index="4"></audio>
+      <audio id="sx-click-c3" class="clip" src="assets/sfx/click-soft.mp3" data-start="46.0" data-duration="0.36" data-volume="0.9" data-track-index="3"></audio>
+      <audio id="sx-whoosh-cta" class="clip" src="assets/sfx/whoosh.mp3" data-start="48.37" data-duration="0.57" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-impact-restock" class="clip" src="assets/sfx/impact.mp3" data-start="49.0" data-duration="2.3" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sx-pop-grab" class="clip" src="assets/sfx/pop.mp3" data-start="50.63" data-duration="0.5" data-volume="0.75" data-track-index="4"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Scene seams: the incoming shot lands slightly large and settles
+      [["#f04", 5.0], ["#f07", 16.0], ["#f09", 25.5], ["#f13", 35.0], ["#f18", 48.5]].forEach(([sel, t]) => {
+        tl.fromTo(sel, { scale: 1.14 }, { scale: 1, duration: 0.45, ease: "expo.out" }, t);
+      });
+      // Hook: open punched in on the pain, settle fast
+      tl.fromTo("#f01", { scale: 1.12 }, { scale: 1, duration: 0.6, ease: "expo.out" }, 0);
+      // Workout: hard punch-in on the squat, on the beat
+      tl.fromTo("#f08", { scale: 1, y: 0 }, { scale: 1.18, y: 60, duration: 0.25, ease: "power3.out" }, 22.0);
+      // CTA: punch-in on the RESTOCK hit
+      tl.fromTo("#f18", { scale: 1 }, { scale: 1.08, duration: 0.2, ease: "power3.out" }, 49.0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

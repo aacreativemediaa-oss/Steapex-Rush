@@ -1,0 +1,4 @@
+# Footage proxies are large (~470 MB) — regenerate from the Drive originals (see README.md)
+assets/footage/
+.hyperframes/
+node_modules/

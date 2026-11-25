@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    .w { display: inline-block; }
+    .disp { font-family: "Oswald", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.02; letter-spacing: 0.005em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .body { font-family: "Montserrat", sans-serif; font-weight: 800; line-height: 1.18;
+      text-shadow: 0 4px 18px rgba(0,0,0,.6), 0 2px 3px rgba(0,0,0,.65); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 2px 22px 6px; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .badge { position: absolute; top: 300px; left: 384px; width: 240px; height: 66px; border-radius: 33px; background: #fff; color: var(--red);
+      font-family: "Oswald", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .06em; line-height: 66px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .chip { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px;
+      padding: 12px 26px 14px; border-radius: 40px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .plate { display: inline-block; background: rgba(12,12,14,.62); border-radius: 18px; padding: 10px 22px 12px; }
+    .chip svg { width: 34px; height: 34px; vertical-align: -6px; margin-right: 8px; }
+    #t2-head { top: 396px; }
+    #t2-a { font-size: 86px; }
+    #t2-b { font-size: 132px; margin-top: 10px; }
+    #t2-c { font-size: 132px; }
+    #t2-why { top: 390px; }
+    #t2-why1 { font-size: 60px; }
+    #t2-why2 { font-size: 112px; margin-top: 8px; }
+    #t2-why3 { font-size: 37px; margin-top: 16px; white-space: nowrap; }
+    #t2-ex { top: 396px; }
+    #t2-ex1 { font-size: 50px; margin-bottom: 10px; }
+    #t2-ex .chip { font-size: 44px; }
+  </style>
+  <div id="root" data-composition-id="tip2" data-width="1080" data-height="1920">
+    <div id="t2-badge" class="badge">TIP #2</div>
+
+    <div id="t2-head" class="blk">
+      <span id="t2-a" class="ln disp">JANGAN LUPA</span>
+      <span id="t2-b" class="ln disp"><span class="hl">STRENGTH</span></span>
+      <span id="t2-c" class="ln disp">WORKOUT</span>
+    </div>
+
+    <div id="t2-why" class="blk">
+      <span id="t2-why1" class="ln body">Kuatkan</span>
+      <span id="t2-why2" class="ln disp"><span class="hl">SENDI LUTUT</span></span>
+      <span class="ln"><span id="t2-why3" class="body plate">bila tapak kaki hentak jalan raya</span></span>
+    </div>
+
+    <div id="t2-ex" class="blk">
+      <span id="t2-ex1" class="ln body">Contoh senaman:</span>
+      <span id="t2-chip1" class="chip"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="17" fill="#22B35E"/><path d="M9 17.5l5.5 5.5L25 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>SQUAT</span>
+      <span id="t2-chip2" class="chip"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="17" fill="#22B35E"/><path d="M9 17.5l5.5 5.5L25 12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>PARTIAL SQUAT</span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const out = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, t);
+
+    tl.fromTo("#t2-badge", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)" }, 0.05);
+
+    // Beat 1 — headline (0.1 – 2.4)
+    tl.fromTo("#t2-a", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.12);
+    tl.fromTo("#t2-b", { opacity: 0, x: -120 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 0.3);
+    tl.fromTo("#t2-c", { opacity: 0, x: 120 }, { opacity: 1, x: 0, duration: 0.4, ease: "expo.out" }, 0.42);
+    out("#t2-head", 2.3);
+
+    // Beat 2 — why (2.5 – 5.9)
+    tl.fromTo("#t2-why1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 2.52);
+    tl.fromTo("#t2-why2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 2.66);
+    tl.fromTo("#t2-why3", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 3.0);
+    out("#t2-why", 5.8);
+
+    // Beat 3 — examples, chips land on the sounds (6.0 – 9.3)
+    tl.fromTo("#t2-ex1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 6.02);
+    tl.fromTo("#t2-chip1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 6.3);
+    tl.fromTo("#t2-chip2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 6.62);
+    out(["#t2-ex", "#t2-badge"], 9.28);
+
+    window.__timelines["tip2"] = tl;
+  </script>
+</template>

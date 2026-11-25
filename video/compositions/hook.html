@@ -1,0 +1,69 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    .w { display: inline-block; }
+    .disp { font-family: "Oswald", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.02; letter-spacing: 0.005em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .body { font-family: "Montserrat", sans-serif; font-weight: 800; line-height: 1.18;
+      text-shadow: 0 4px 18px rgba(0,0,0,.6), 0 2px 3px rgba(0,0,0,.65); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 2px 22px 6px; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .badge { position: absolute; top: 300px; left: 384px; width: 240px; height: 66px; border-radius: 33px; background: #fff; color: var(--red);
+      font-family: "Oswald", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .06em; line-height: 66px; text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .chip { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px;
+      padding: 12px 26px 14px; border-radius: 40px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .chip svg { width: 34px; height: 34px; vertical-align: -6px; margin-right: 8px; }
+    #hook-kicker { top: 300px; }
+    #hook-kicker .chip { font-size: 34px; padding: 8px 24px 10px; background: var(--red); color: #fff; }
+    #hook-title { top: 392px; }
+    #hook-l1 { font-size: 132px; }
+    #hook-l2 { font-size: 84px; margin-top: 6px; }
+    #hook-l3 { font-size: 132px; margin-top: 14px; }
+    #hook-save { top: 1010px; height: 150px; }
+    #hook-pill { display: inline-flex; align-items: center; gap: 22px; background: #fff; color: var(--dark); border-radius: 30px;
+      padding: 20px 34px 22px 26px; box-shadow: 0 14px 40px rgba(0,0,0,.4); text-align: left; }
+    #hook-pill .t1 { font-family: "Montserrat"; font-weight: 900; font-size: 50px; line-height: 1.1; }
+    #hook-pill .t2 { font-family: "Montserrat"; font-weight: 700; font-size: 40px; line-height: 1.1; color: #444; }
+    #hook-icon { position: relative; width: 100px; height: 100px; border-radius: 22px; background: var(--red); flex: none; }
+    #hook-icon svg { position: absolute; left: 28px; top: 24px; width: 44px; height: 52px; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+    <div id="hook-kicker" class="blk"><span class="chip">3 TIPS PENTING</span></div>
+    <div id="hook-title" class="blk disp">
+      <span id="hook-l1" class="ln" data-var-text="hook1">TIPS JOGGING</span>
+      <span id="hook-l2" class="ln">UNTUK</span>
+      <span id="hook-l3" class="ln"><span class="hl">OVERWEIGHT</span></span>
+    </div>
+    <div id="hook-save" class="blk low">
+      <div id="hook-pill">
+        <div id="hook-icon">
+          <svg viewBox="0 0 44 52"><path id="hook-bm-line" d="M4 4h36v44L22 36 4 48z" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/><path id="hook-bm-fill" d="M4 4h36v44L22 36 4 48z" fill="#fff"/></svg>
+        </div>
+        <div>
+          <div class="t1">SAVE video ni</div>
+          <div class="t2">sebelum hilang!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Frame 0 already carries the hook; it settles from a punch.
+    tl.fromTo("#hook-title", { scale: 1.12 }, { scale: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#hook-kicker", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.35, ease: "power4.out" }, 0.35);
+    // Save CTA pops in, then the bookmark fills on the shutter.
+    tl.fromTo("#hook-pill", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 2.5);
+    tl.fromTo("#hook-bm-fill", { opacity: 0 }, { opacity: 1, duration: 0.08 }, 2.93);
+    tl.fromTo("#hook-icon", { scale: 1 }, { scale: 1.18, duration: 0.1, ease: "power2.out" }, 2.93);
+    tl.to("#hook-icon", { scale: 1, duration: 0.3, ease: "power3.out" }, 3.03);
+    // Exit: blur away into the whoosh.
+    tl.to(["#hook-kicker", "#hook-title", "#hook-pill"], { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in", stagger: 0.03 }, 4.72);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>
