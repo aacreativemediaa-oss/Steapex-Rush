@@ -1,0 +1,25 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #ov-track { position: absolute; left: 0; top: 0; width: 1080px; height: 14px; background: rgba(0,0,0,.35); }
+    #ov-bar { position: absolute; left: 0; top: 0; width: 1080px; height: 14px; transform-origin: left center;
+      background: linear-gradient(90deg, #ff2e7e 0%, #c6ff00 100%); }
+    #ov-flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="overlay" data-width="1080" data-height="1920">
+    <div id="ov-track" data-layout-ignore></div>
+    <div id="ov-bar" data-layout-ignore></div>
+    <div id="ov-flash" data-layout-ignore data-layout-allow-occlusion></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const TOTAL = 45.8;
+    // Progress bar pink -> green across the whole film
+    tl.fromTo("#ov-bar", { scaleX: 0 }, { scaleX: 1, duration: TOTAL, ease: "none" }, 0);
+    // Brief white flash on every cut
+    [3.5, 5.5, 10.5, 15.3, 22.8, 25.8, 30.8, 34.8, 38.8].forEach((t) => {
+      tl.fromTo("#ov-flash", { opacity: 0.7 }, { opacity: 0, duration: 0.14, ease: "power2.out", immediateRender: false }, t);
+    });
+    window.__timelines["overlay"] = tl;
+  </script>
+</template>

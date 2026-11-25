@@ -1,91 +1,82 @@
 <template>
   <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
     #root { position: absolute; inset: 0; overflow: visible;
-      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
       font-family: "Montserrat", sans-serif; color: var(--ink); }
     .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
     .low { left: 120px; width: 660px; }
     .ln { display: block; }
-    .w { display: inline-block; }
-    .disp { font-family: "Oswald", sans-serif; font-weight: 700; text-transform: uppercase; line-height: 1.02; letter-spacing: 0.005em;
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
       text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
-    .body { font-family: "Montserrat", sans-serif; font-weight: 800; line-height: 1.18;
-      text-shadow: 0 4px 18px rgba(0,0,0,.6), 0 2px 3px rgba(0,0,0,.65); }
-    .hl { display: inline-block; background: var(--red); color: #fff; padding: 2px 22px 6px; border-radius: 10px; text-shadow: none;
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 0 20px 4px; border-radius: 10px; text-shadow: none;
       box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-    .badge { position: absolute; top: 300px; left: 384px; width: 240px; height: 66px; border-radius: 33px; background: #fff; color: var(--red);
-      font-family: "Oswald", sans-serif; font-weight: 700; font-size: 40px; letter-spacing: .06em; line-height: 66px; text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-    .chip { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 38px;
-      padding: 12px 26px 14px; border-radius: 40px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
-    .plate { display: inline-block; background: rgba(12,12,14,.62); border-radius: 18px; padding: 10px 22px 12px; }
-    .chip svg { width: 34px; height: 34px; vertical-align: -6px; margin-right: 8px; }
-    #u-intro { top: 330px; }
-    #u-i1 { font-size: 58px; }
-    #u-i2 { font-size: 170px; margin-top: 4px; letter-spacing: .02em; }
-    .card { position: absolute; left: 120px; top: 330px; width: 768px; height: 250px; border-radius: 34px;
-      background: rgba(16,16,20,.78); backdrop-filter: blur(22px); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
-    .card .ico { position: absolute; left: 34px; top: 45px; width: 160px; height: 160px; border-radius: 80px; background: var(--red); }
-    .card .ico svg { position: absolute; left: 30px; top: 30px; width: 100px; height: 100px; }
-    .card .kick { position: absolute; left: 224px; top: 42px; font-family: "Montserrat"; font-weight: 800; font-size: 30px; letter-spacing: .12em; color: #ff8a84; }
-    .card .ttl { position: absolute; left: 224px; top: 84px; width: 520px; font-family: "Oswald"; font-weight: 700; font-size: 62px; line-height: 1.04; text-transform: uppercase; color: #fff; text-align: left; }
-    .sub { top: 620px; }
-    .sub .body { font-size: 48px; }
-    #u2-sub2 { top: 610px; }
-    #u2-chips { top: 700px; }
-    #u2-chips .chip { font-size: 40px; }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    .kick { position: absolute; left: 0; width: 768px; text-align: center; top: 330px; }
+    .kick span { display: inline-block; background: rgba(16,16,20,.8); color: #ff8a84; padding: 8px 18px; border-radius: 20px; }
+    #u1-t, #u2-t { top: 378px; font-size: 92px; }
+    #u1-air { top: 500px; height: 110px; }
+    #u1-air svg { display: block; margin: 0 auto; width: 300px; height: 110px; overflow: visible; }
+    #u1-subw { top: 630px; }
+    #u2-subw { top: 610px; }
+    #u2-pills { top: 770px; }
   </style>
   <div id="root" data-composition-id="usp" data-width="1080" data-height="1920">
-    <div id="u-intro" class="blk">
-      <span id="u-i1" class="ln body">Contohnya macam kasut</span>
-      <span id="u-i2" class="ln disp">STEAPEX</span>
+    <!-- USP 1 -->
+    <div id="u1" class="blk" style="top:0;height:900px">
+      <div class="kick"><span class="lbl">Kelebihan #1</span></div>
     </div>
+    <div id="u1-t" class="blk anton">KAIN <span class="hl">BREATHABLE</span></div>
+    <div id="u1-air" class="blk" data-layout-allow-overflow><svg viewBox="0 0 300 110"><g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
+      <path id="u1-w1" d="M10 30h170a22 22 0 1 0-22-22"/><path id="u1-w2" d="M10 60h230a20 20 0 1 1-20 20"/><path id="u1-w3" d="M10 90h120"/></g></svg></div>
+    <div id="u1-subw" class="blk"><span id="u1-sub" class="sub">Tak rasa berkuap<br>atau panas bila<br>jogging lama</span></div>
 
-    <!-- USP 1: breathable fabric -->
-    <div id="u1-card" class="card">
-      <div class="ico"><svg viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
-        <path id="u1-w1" d="M8 34h54a14 14 0 1 0-14-14"/><path id="u1-w2" d="M8 54h74a12 12 0 1 1-12 12"/><path id="u1-w3" d="M8 74h40"/></g></svg></div>
-      <div class="kick">KELEBIHAN #1</div>
-      <div class="ttl">Kain<br><span style="color:#ff6b63">breathable</span></div>
+    <!-- USP 2 -->
+    <div id="u2" class="blk" style="top:0;height:900px">
+      <div class="kick"><span class="lbl">Kelebihan #2</span></div>
     </div>
-    <div id="u1-sub" class="blk sub"><span class="body plate">Tak rasa berkuap atau panas bila jogging lama</span></div>
-
-    <!-- USP 2: no hard plate -->
-    <div id="u2-card" class="card">
-      <div class="ico"><svg viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
-        <rect x="12" y="40" width="76" height="20" rx="6"/><path id="u2-x" d="M18 18l64 64M82 18L18 82" stroke-width="9"/></g></svg></div>
-      <div class="kick">KELEBIHAN #2</div>
-      <div class="ttl">Tak ada<br><span style="color:#ff6b63">plate keras</span></div>
-    </div>
-    <div id="u2-sub2" class="blk sub"><span class="body plate">Lebih selesa untuk:</span></div>
-    <div id="u2-chips" class="blk">
-      <span id="u2-c1" class="chip">Jalan jauh</span><span id="u2-c2" class="chip">Travel</span><span id="u2-c3" class="chip">Kerja</span>
+    <div id="u2-t" class="blk anton"><span class="ln">TAK ADA</span><span class="ln"><span class="hl">PLATE KERAS</span></span></div>
+    <div id="u2-subw" class="blk"><span id="u2-sub" class="sub">Lebih selesa jalan<br>jarak jauh</span></div>
+    <div id="u2-pills" class="blk">
+      <span id="u2-p1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Travel<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="10" y="14" width="28" height="26" rx="4"/><path d="M18 14V8h12v6M16 40v4M32 40v4"/></g></svg></span>
+      <span id="u2-p2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Kerja<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="5" y="15" width="38" height="26" rx="4"/><path d="M17 15v-5h14v5M5 26h38"/></g></svg></span>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    const out = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power2.in" }, t);
+    const out = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, t);
 
-    // Bridge into the product (0.0 – 1.9): brand name reveals letter by letter
-    tl.fromTo("#u-i1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.08);
-    tl.fromTo("#u-i2", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, 0.3);
-    out("#u-intro", 1.82);
+    // USP 1 — kain breathable (0 – 4.0): air flows through
+    tl.fromTo("#u1", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.08);
+    tl.fromTo("#u1-t", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.2);
+    tl.fromTo(["#u1-w1", "#u1-w2", "#u1-w3"], { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 0.5);
+    tl.to(["#u1-w1", "#u1-w2", "#u1-w3"], { x: 26, duration: 1.2, ease: "sine.inOut", stagger: 0.1 }, 1.0);
+    tl.fromTo("#u1-sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 1.0);
+    out(["#u1", "#u1-t", "#u1-air", "#u1-subw"], 3.83);
 
-    // USP 1 (2.0 – 6.9)
-    tl.fromTo("#u1-card", { opacity: 0, x: -140 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 2.05);
-    tl.fromTo(["#u1-w1", "#u1-w2", "#u1-w3"], { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.35, ease: "power3.out", stagger: 0.08 }, 2.3);
-    tl.fromTo("#u1-sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.35, ease: "power4.out" }, 4.5);
-    tl.to("#u1-card", { opacity: 0, x: 140, duration: 0.25, ease: "power3.in" }, 6.7);
-    out("#u1-sub", 6.72);
-
-    // USP 2 (7.0 – 13.4)
-    tl.fromTo("#u2-card", { opacity: 0, x: -140 }, { opacity: 1, x: 0, duration: 0.45, ease: "expo.out" }, 7.05);
-    tl.fromTo("#u2-x", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.4);
-    tl.fromTo("#u2-sub2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 10.0);
-    tl.fromTo("#u2-c1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.64);
-    tl.fromTo("#u2-c2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.87);
-    tl.fromTo("#u2-c3", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 11.04);
-    out(["#u2-card", "#u2-sub2", "#u2-chips"], 13.3);
+    // USP 2 — tak ada plate keras (4.0 – 8.0)
+    tl.fromTo("#u2", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 4.08);
+    tl.fromTo("#u2-t", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 4.2);
+    tl.fromTo("#u2-sub", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 4.75);
+    tl.fromTo("#u2-p1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.3);
+    tl.fromTo("#u2-p2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.55);
+    out(["#u2", "#u2-t", "#u2-subw", "#u2-pills"], 7.83);
 
     window.__timelines["usp"] = tl;
   </script>

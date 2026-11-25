@@ -1,0 +1,94 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 0 20px 4px; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #e3-head { top: 430px; }
+    #e3-a { font-size: 76px; }
+    #e3-b { font-size: 92px; margin-top: 4px; }
+    #e3-pain { top: 430px; }
+    #e3-p1 { font-size: 66px; }
+    #e3-p2 { font-size: 92px; margin-top: 4px; }
+    #e3-foot { top: 650px; height: 230px; }
+    #e3-foot svg { display: block; margin: 0 auto; width: 520px; height: 230px; overflow: visible; }
+    #e3-joy { top: 430px; font-size: 92px; }
+    #e3-joysubw { top: 560px; }
+  </style>
+  <div id="root" data-composition-id="edu3" data-width="1080" data-height="1920">
+    <div id="e3-badge" class="badge">3</div>
+
+    <div id="e3-head" class="blk anton">
+      <span id="e3-a" class="ln">PAKAI KASUT ADA</span>
+      <span id="e3-b" class="ln"><span class="hl">SHOCK</span> ABSORPTION</span>
+    </div>
+
+    <div id="e3-pain" class="blk anton">
+      <span id="e3-p1" class="ln">KURANGKAN SAKIT PADA</span>
+      <span id="e3-p2" class="ln"><span class="hl">TAPAK KAKI</span></span>
+    </div>
+    <div id="e3-foot" class="blk" data-layout-allow-overflow><svg viewBox="0 0 520 230">
+      <g id="e3-print" fill="#fff">
+        <path d="M262 62c26 0 38 26 36 56-2 28-12 40-10 62 2 20-6 34-24 34s-30-14-28-38c2-22 6-34 0-60-6-28 4-54 26-54z"/>
+        <circle cx="240" cy="40" r="11"/><circle cx="262" cy="30" r="10"/><circle cx="282" cy="32" r="9"/><circle cx="298" cy="40" r="8"/><circle cx="310" cy="52" r="7"/>
+      </g>
+      <ellipse id="e3-r1" opacity="0" cx="266" cy="214" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="6"/>
+      <ellipse id="e3-r2" opacity="0" cx="266" cy="214" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="5"/>
+      <ellipse id="e3-r3" opacity="0" cx="266" cy="214" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="4"/>
+    </svg></div>
+
+    <div id="e3-joy" class="blk anton">LEBIH <span class="hl">ENJOY</span></div>
+    <div id="e3-joysubw" class="blk"><span id="e3-joysub" class="sub">Briskwalk &amp; jogging<br>setiap hari</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const out = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, t);
+
+    tl.fromTo("#e3-badge", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 0.08);
+
+    // A — shock absorption (0.1 – 3.0): arrows press into the sole
+    tl.fromTo("#e3-a", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.25);
+    tl.fromTo("#e3-b", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.45);
+    out("#e3-head", 2.88);
+
+    // B — kurangkan sakit tapak kaki: footprint lands, impact ripples away (3.0 – 5.5)
+    tl.fromTo("#e3-p1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 3.02);
+    tl.fromTo("#e3-p2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 3.2);
+    tl.fromTo("#e3-print", { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.in" }, 3.45);
+    [["#e3-r1", 3.75], ["#e3-r2", 3.95], ["#e3-r3", 4.15]].forEach(([s, t]) => {
+      tl.fromTo(s, { opacity: 0.95, attr: { rx: 50, ry: 10 } }, { opacity: 0, attr: { rx: 250, ry: 40 }, duration: 0.9, ease: "power2.out", immediateRender: false }, t);
+    });
+    out(["#e3-pain", "#e3-foot"], 5.38);
+
+    // C — lebih enjoy (5.5 – 8.0)
+    tl.fromTo("#e3-joy", { opacity: 0, scale: 1.4, rotation: -5 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: "back.out(1.6)" }, 5.5);
+    tl.fromTo("#e3-joysub", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 5.85);
+    out(["#e3-joy", "#e3-joysubw", "#e3-badge"], 7.83);
+
+    window.__timelines["edu3"] = tl;
+  </script>
+</template>
