@@ -1,0 +1,76 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #sz-wrap { top: 400px; height: 330px; }
+    #sz-lbl { position: absolute; left: 0; top: 0; width: 768px; font-size: 64px; }
+    #sz-num { position: absolute; left: 0; top: 82px; width: 768px; height: 110px; }
+    .sz-n { position: absolute; left: 0; top: 0; width: 768px; font-size: 96px; line-height: 110px; opacity: 0; }
+    #sz-range .hl { padding: 0 24px 4px; }
+    #sz-chips { position: absolute; left: 4px; top: 226px; width: 760px; height: 50px; }
+    .sz-c { position: absolute; top: 0; width: 66px; height: 50px; border-radius: 10px; background: rgba(0,0,0,.55); border: 2px solid rgba(255,255,255,.5);
+      color: #fff; text-align: center; line-height: 46px; letter-spacing: 0; }
+  </style>
+  <div id="root" data-composition-id="size" data-width="1080" data-height="1920">
+    <div id="sz-wrap" class="blk">
+      <div id="sz-lbl" class="anton">ADA SIZE</div>
+      <div id="sz-num">
+        <div id="sz-36" class="sz-n anton">36</div><div id="sz-37" class="sz-n anton">37</div><div id="sz-38" class="sz-n anton">38</div>
+        <div id="sz-39" class="sz-n anton">39</div><div id="sz-40" class="sz-n anton">40</div><div id="sz-41" class="sz-n anton">41</div>
+        <div id="sz-42" class="sz-n anton">42</div><div id="sz-43" class="sz-n anton">43</div><div id="sz-44" class="sz-n anton">44</div>
+        <div id="sz-range" class="sz-n anton"><span class="hl">36 – 45</span></div>
+      </div>
+      <div id="sz-chips">
+        <div id="szc-36" class="sz-c lbl" style="left:0px">36</div><div id="szc-37" class="sz-c lbl" style="left:77px">37</div>
+        <div id="szc-38" class="sz-c lbl" style="left:154px">38</div><div id="szc-39" class="sz-c lbl" style="left:231px">39</div>
+        <div id="szc-40" class="sz-c lbl" style="left:308px">40</div><div id="szc-41" class="sz-c lbl" style="left:385px">41</div>
+        <div id="szc-42" class="sz-c lbl" style="left:462px">42</div><div id="szc-43" class="sz-c lbl" style="left:539px">43</div>
+        <div id="szc-44" class="sz-c lbl" style="left:616px">44</div><div id="szc-45" class="sz-c lbl" style="left:693px">45</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 8.5 s. "Size" 8.54 (0.04); "36" 9.66 (1.16); "45" 9.98 -> count to 10.3 (1.8)
+    tl.fromTo("#sz-wrap", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 0.06);
+    tl.set("#sz-36", { opacity: 1 }, 0.06);
+    tl.set("#szc-36", { background: "#E8322B", borderColor: "#fff" }, 1.16);
+    [37, 38, 39, 40, 41, 42, 43, 44].forEach((n, i) => {
+      const t = 1.16 + (i + 1) * 0.071;
+      tl.set("#sz-" + (n - 1), { opacity: 0 }, t);
+      tl.set("#sz-" + n, { opacity: 1 }, t);
+      tl.set("#szc-" + n, { background: "#E8322B", borderColor: "#fff" }, t);
+    });
+    tl.set("#sz-44", { opacity: 0 }, 1.8);
+    tl.set("#szc-45", { background: "#E8322B", borderColor: "#fff" }, 1.8);
+    tl.fromTo("#sz-range", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 1.8);
+    tl.to("#sz-wrap", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 2.43);
+    window.__timelines["size"] = tl;
+  </script>
+</template>
