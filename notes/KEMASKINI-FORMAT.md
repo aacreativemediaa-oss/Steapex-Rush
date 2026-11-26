@@ -14,6 +14,9 @@ Tambahan kepada *Format Edit Video* (PDF). Kemaskini ini mengatasi format asal j
    - **Alternatif:** `lv_0_20260719163435.mp4` (proxy `beige-track.mp4`), **saat 39.5 – 47.5**: kaki memijak dan menekan kasut atas tikar di trek.
    - Gantikan shot tangan tekan foam (`beige-unbox` 3.7 s) untuk babak foam / empuk / selesa / shock absorption.
 
+## Fakta produk
+- **Nama kasut: Steapex Surge** (bukan "Steapex Rush"; Whisper selalu salah dengar nama ini, jadi semak setiap kali).
+
 ## Kemaskini sebelum ini (masih terpakai)
 - **Kurangkan tukar shot.** Sasar ~6 klip untuk video ~30 s (setiap klip 3.5–6 s). Tukar shot hanya bila topik VO berubah.
 - **SFX 40% lebih perlahan** daripada paras asal (contoh: pop 0.18, whoosh 0.13, impact 0.27).
