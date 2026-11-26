@@ -6,6 +6,7 @@ Tambahan kepada *Format Edit Video* (PDF). Kemaskini ini mengatasi format asal j
 1. **Headline hook naik ke atas sikit.** Letak blok headline sekitar `top: 240px` (sebelum ini 318px). Sub-headline ikut naik.
    - Headline panjang yang diminta **satu baris**: guna saiz terbesar yang muat lebar zon selamat 768px (cth. "PLUS SIZE NAK START JOGGING?" = 62px). Sub-headline diletak terus di bawah.
 1b. **Headline atas setiap scene maksimum 80px** (tajuk babak, nombor statistik, cop RESTOCK, kad CTA). Baris kecil kekal 72–76px.
+1c. **Semua headline & grafik atas setiap scene diletak lebih tinggi:** mula sekitar `top: 320px` (sebelum ini 400px). Pill/sub di bawahnya ikut naik.
 2. **Shot USP "ventilation" & "breathable"** guna shot rujukan ini:
    `notes/rujukan-shot-ventilation-breathable.png`
    → fail Drive `lv_0_20260719154019.mp4` (proxy `beige-unbox.mp4`), **saat 79.8 – 83.8**: pandangan sisi kasut beige, mesh & lubang udara kelihatan jelas, pelekat biru "Sterilizing Deodorizing" di dalam.
