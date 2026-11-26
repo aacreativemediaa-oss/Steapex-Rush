@@ -19,7 +19,7 @@ Pembetulan Whisper (disahkan pengguna): "darah sepedih" → **dah rasa pedih** �
 | 4 | 17.5–23.0 | Kasut beige dipegang (depan) | Pelekat 💡 **TIPS!** · **CUSHION TEBAL & SUPPORTIVE** (caption disembunyikan) |
 | 5 | 23.0–26.1 | **Shot pijak tapak kasut** (close-up tumit, lantai kayu) | **SERAP HENTAKAN** + anak panah + gelombang (caption disembunyikan) |
 | 6 | 26.1–34.8 | Kaki memijak di trek | **JOGGING 1 JAM+** + **MASIH STEADY!** · pill ✓ Tak sakit ✓ Tak lenguh (caption disembunyikan) |
-| 7 | 34.8–39.6 | **Shot rujukan mesh sisi** (pelekat biru) | **VENTILATION** + aliran udara · pill ✓ Tak berpeluh ✓ Tak panas (caption disembunyikan) |
+| 7 | 34.8–39.6 | **Shot rujukan mesh sisi** (pelekat biru) | Ikon aliran udara (tanpa tulisan, permintaan pengguna) + caption "ada ventilation tau" · pill ✓ Tak berpeluh ✓ Tak panas |
 | 8 | 39.6–44.7 | Treadmill | Pill ✓ Bersukan ✓ Pergi kerja ✓ Travel (caption disembunyikan) |
 | 9 | 44.7–48.9 | Sepasang kasut beige | Bulatan beige + **WARNA BEIGE** + cop **BARU RESTOCK!** (caption disembunyikan) |
 | 10 | 48.9–54.4 | Kasut dipegang | Pill ⚠ Banyak size dah low stock! · kad putih **CHECK OUT TERUS!** (caption disembunyikan) |

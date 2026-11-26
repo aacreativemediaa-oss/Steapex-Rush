@@ -8,6 +8,7 @@ Tambahan kepada *Format Edit Video* (PDF). Kemaskini ini mengatasi format asal j
 2. **Shot USP "ventilation" & "breathable"** guna shot rujukan ini:
    `notes/rujukan-shot-ventilation-breathable.png`
    → fail Drive `lv_0_20260719154019.mp4` (proxy `beige-unbox.mp4`), **saat 79.8 – 83.8**: pandangan sisi kasut beige, mesh & lubang udara kelihatan jelas, pelekat biru "Sterilizing Deodorizing" di dalam.
+   - **Jangan letak tajuk tulisan "VENTILATION"** atas shot ini. Guna ikon aliran udara + pill sahaja, dan biar caption VO tunjuk perkataan "ventilation".
 3. **Jangan close up video original.** Footage dipapar penuh: tiada zoom masuk, tiada push perlahan, tiada crop digital. Gegar skrin hanya pada tulisan.
 4. **Shot keselesaan foam / shock absorption** guna shot pengguna **pijak tapak kasut** (berat kaki menekan midsole, foam nampak mampat):
    - **Utama:** `lv_0_20260810105559.mp4` (proxy `beige-indoor.mp4`), **saat 14.2 – 17.6**: close-up tumit dengan kaki di dalam, foam midsole mampat bila dipijak (lantai kayu).
