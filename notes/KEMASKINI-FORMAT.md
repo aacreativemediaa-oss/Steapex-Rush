@@ -8,6 +8,10 @@ Tambahan kepada *Format Edit Video* (PDF). Kemaskini ini mengatasi format asal j
    `notes/rujukan-shot-ventilation-breathable.png`
    → fail Drive `lv_0_20260719154019.mp4` (proxy `beige-unbox.mp4`), **saat 79.8 – 83.8**: pandangan sisi kasut beige, mesh & lubang udara kelihatan jelas, pelekat biru "Sterilizing Deodorizing" di dalam.
 3. **Jangan close up video original.** Footage dipapar penuh: tiada zoom masuk, tiada push perlahan, tiada crop digital. Gegar skrin hanya pada tulisan.
+4. **Shot keselesaan foam / shock absorption** guna shot pengguna **pijak tapak kasut** (berat kaki menekan midsole, foam nampak mampat):
+   - **Utama:** `lv_0_20260810105559.mp4` (proxy `beige-indoor.mp4`), **saat 14.2 – 17.6**: close-up tumit dengan kaki di dalam, foam midsole mampat bila dipijak (lantai kayu).
+   - **Alternatif:** `lv_0_20260719163435.mp4` (proxy `beige-track.mp4`), **saat 39.5 – 47.5**: kaki memijak dan menekan kasut atas tikar di trek.
+   - Gantikan shot tangan tekan foam (`beige-unbox` 3.7 s) untuk babak foam / empuk / selesa / shock absorption.
 
 ## Kemaskini sebelum ini (masih terpakai)
 - **Kurangkan tukar shot.** Sasar ~6 klip untuk video ~30 s (setiap klip 3.5–6 s). Tukar shot hanya bila topik VO berubah.
