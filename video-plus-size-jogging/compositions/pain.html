@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #pn-1w { top: 400px; }
+    #pn-2w { top: 490px; }
+    #pn-t { top: 400px; }
+    #pn-t1 { font-size: 72px; }
+    #pn-t2 { font-size: 92px; margin-top: 6px; }
+  </style>
+  <div id="root" data-composition-id="pain" data-width="1080" data-height="1920">
+    <div id="pn-1w" class="blk"><span id="pn-1" class="pill risk"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#fff"/><path d="M24 17v13" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#E8322B"/></svg>Tumit pedih</span></div>
+    <div id="pn-2w" class="blk"><span id="pn-2" class="pill risk"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#fff"/><path d="M24 17v13" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#E8322B"/></svg>Lutut lenguh</span></div>
+    <div id="pn-t" class="blk anton">
+      <span id="pn-t1" class="ln">KASUT KORANG</span>
+      <span id="pn-t2" class="ln"><span class="hl">TAK SUPPORT!</span></span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 4.9 s. "tumit" 8.06 (3.16); "Lutut" 9.36 (4.46); "Tapi kasut" 15.34 (10.44); "tak support" 16.90 (12.0)
+    tl.fromTo("#pn-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 3.16);
+    tl.fromTo("#pn-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 4.46);
+    tl.to(["#pn-1w", "#pn-2w"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 10.2);
+    tl.fromTo("#pn-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 10.44);
+    tl.fromTo("#pn-t2", { opacity: 0, scale: 1.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.3, ease: "expo.out" }, 12.0);
+    [[12, -6], [-9, 5], [6, 6], [-3, -2], [0, 0]].forEach(([x, y], i) => tl.to("#pn-t2", { x, y, duration: 0.05, ease: "none" }, 12.05 + i * 0.05));
+    tl.to("#pn-t", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 12.45);
+    window.__timelines["pain"] = tl;
+  </script>
+</template>
