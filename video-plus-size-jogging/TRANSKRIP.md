@@ -13,7 +13,7 @@ Pembetulan Whisper (disahkan pengguna): "darah sepedih" → **dah rasa pedih** �
 ## Susunan klip & grafik
 | # | Masa | Klip | Grafik |
 | --- | --- | --- | --- |
-| 1 | 0.0–4.9 | B-roll: lelaki berjalan di trek lihat jam (intro satu shot) | Hook **PLUS SIZE / NAK START / JOGGING?** (100px, lebih tinggi) + **⚠ INI KESILAPAN KORANG!** (47px) · impact + gegar |
+| 1 | 0.0–4.9 | B-roll: lelaki berjalan di trek lihat jam (intro satu shot) | Hook **PLUS SIZE NAK START JOGGING?** (satu baris 62px, pilihan pengguna) + **⚠ INI KESILAPAN KORANG!** (47px) · impact + gegar |
 | 2 | 4.9–9.3 | B-roll: pegang tumit | Pill ⚠ Tumit pedih |
 | 3 | 9.3–17.5 | B-roll: pegang lutut | Pill ⚠ Lutut lenguh · **KASUT KORANG / TAK SUPPORT!** (caption disembunyikan) |
 | 4 | 17.5–23.0 | Kasut beige dipegang (depan) | Pelekat 💡 **TIPS!** · **CUSHION TEBAL & SUPPORTIVE** (caption disembunyikan) |

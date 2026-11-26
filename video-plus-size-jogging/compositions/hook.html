@@ -29,16 +29,13 @@
     .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
     /* Updated format: hook headline sits higher (240px) */
-    #h-title { top: 240px; font-size: 100px; }
-    #h-l3 { margin-top: 8px; }
-    #h-subw { top: 610px; }
+    /* One-line headline (user choice): 62px is the largest that fits the 768px safe width */
+    #h-title { top: 240px; font-size: 62px; white-space: nowrap; }
+    #h-title .hl { padding: 6px 14px 4px; }
+    #h-subw { top: 350px; }
   </style>
   <div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
-    <div id="h-title" class="blk anton">
-      <span id="h-l1" class="ln">PLUS SIZE</span>
-      <span id="h-l2" class="ln">NAK START</span>
-      <span id="h-l3" class="ln"><span class="hl">JOGGING?</span></span>
-    </div>
+    <div id="h-title" class="blk anton"><span id="h-l1">PLUS SIZE NAK START <span class="hl">JOGGING?</span></span></div>
     <div id="h-subw" class="blk"><span id="h-sub" class="sub"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#E8322B"/><path d="M24 17v13" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#fff"/></svg>INI KESILAPAN KORANG!</span></div>
   </div>
   <script>
