@@ -31,8 +31,10 @@
     #pn-t { top: 320px; }
     #pn-t { font-size: 66px; white-space: nowrap; }
     #pn-t .hl { padding: 6px 14px 4px; }
-    #pn-row { top: 320px; white-space: nowrap; }
-    .prow .pill { margin: 0 6px; }
+    #pn-row { top: 320px; }
+    /* one row first; a pill that does not fit wraps to a second row */
+    .prow { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .prow .pill { margin: 0; }
   </style>
   <div id="root" data-composition-id="pain" data-width="1080" data-height="1920">
     <div id="pn-t" class="blk anton">
