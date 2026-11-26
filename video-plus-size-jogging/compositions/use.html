@@ -28,14 +28,15 @@
     /* Small labels (chips, zone labels, colour name): 19px */
     .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
-    #us-1w { top: 320px; }
-    #us-2w { top: 410px; }
-    #us-3w { top: 500px; }
+    #us-row { top: 320px; white-space: nowrap; }
+    .prow .pill { margin: 0 6px; }
+    /* three pills in one row: smaller type, no trailing icon */
+    #us-row .pill { font-size: 34px; padding: 10px 20px 12px 12px; gap: 10px; margin: 0 4px; }
+    #us-row .pill svg { width: 40px; height: 40px; }
+    #us-row .pill svg + svg { display: none; }
   </style>
   <div id="root" data-composition-id="use" data-width="1080" data-height="1920">
-    <div id="us-1w" class="blk"><span id="us-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Bersukan<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="27" cy="7" r="4" fill="#151515"/><path d="M26 15l-6 12 6 6v12M20 27l-8 4M26 17l8 8 7-2M26 33l-8 12"/></g></svg></span></div>
-    <div id="us-2w" class="blk"><span id="us-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Pergi kerja<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="5" y="15" width="38" height="26" rx="4"/><path d="M17 15v-5h14v5M5 26h38"/></g></svg></span></div>
-    <div id="us-3w" class="blk"><span id="us-3" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Travel<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="10" y="14" width="28" height="26" rx="4"/><path d="M18 14V8h12v6M16 40v4M32 40v4"/></g></svg></span></div>
+    <div id="us-row" class="blk prow"><span id="us-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Bersukan<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="27" cy="7" r="4" fill="#151515"/><path d="M26 15l-6 12 6 6v12M20 27l-8 4M26 17l8 8 7-2M26 33l-8 12"/></g></svg></span><span id="us-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Pergi kerja<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="5" y="15" width="38" height="26" rx="4"/><path d="M17 15v-5h14v5M5 26h38"/></g></svg></span><span id="us-3" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Travel<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="10" y="14" width="28" height="26" rx="4"/><path d="M18 14V8h12v6M16 40v4M32 40v4"/></g></svg></span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -43,7 +44,7 @@
     tl.fromTo("#us-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.1);
     tl.fromTo("#us-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.42);
     tl.fromTo("#us-3", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 3.1);
-    tl.to(["#us-1w", "#us-2w", "#us-3w"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 4.33);
+    tl.to(["#us-row"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 4.33);
     window.__timelines["use"] = tl;
   </script>
 </template>

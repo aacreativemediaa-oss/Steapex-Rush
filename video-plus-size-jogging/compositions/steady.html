@@ -30,14 +30,13 @@
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
     #sd-num { top: 320px; font-size: 80px; }
     #sd-subw { top: 440px; }
-    #sd-1w { top: 320px; }
-    #sd-2w { top: 410px; }
+    #sd-row { top: 320px; white-space: nowrap; }
+    .prow .pill { margin: 0 6px; }
   </style>
   <div id="root" data-composition-id="steady" data-width="1080" data-height="1920">
     <div id="sd-num" class="blk anton">JOGGING <span class="hl">1 JAM+</span></div>
     <div id="sd-subw" class="blk"><span id="sd-sub" class="sub">MASIH STEADY!</span></div>
-    <div id="sd-1w" class="blk"><span id="sd-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak sakit</span></div>
-    <div id="sd-2w" class="blk"><span id="sd-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak lenguh</span></div>
+    <div id="sd-row" class="blk prow"><span id="sd-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak sakit</span><span id="sd-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak lenguh</span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -47,7 +46,7 @@
     tl.to(["#sd-num", "#sd-subw"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 5.62);
     tl.fromTo("#sd-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.88);
     tl.fromTo("#sd-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 6.86);
-    tl.to(["#sd-1w", "#sd-2w"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 8.53);
+    tl.to(["#sd-row"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 8.53);
     window.__timelines["steady"] = tl;
   </script>
 </template>

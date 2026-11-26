@@ -30,14 +30,13 @@
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
     #vt-air { top: 340px; height: 110px; }
     #vt-air svg { display: block; margin: 0 auto; width: 300px; height: 110px; overflow: visible; }
-    #vt-1w { top: 480px; }
-    #vt-2w { top: 570px; }
+    #vt-row { top: 480px; white-space: nowrap; }
+    .prow .pill { margin: 0 6px; }
   </style>
   <div id="root" data-composition-id="vent" data-width="1080" data-height="1920">
     <div id="vt-air" class="blk" data-layout-allow-overflow><svg viewBox="0 0 300 110"><g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
       <path id="vt-w1" d="M10 30h170a22 22 0 1 0-22-22"/><path id="vt-w2" d="M10 60h230a20 20 0 1 1-20 20"/><path id="vt-w3" d="M10 90h120"/></g></svg></div>
-    <div id="vt-1w" class="blk"><span id="vt-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak berpeluh</span></div>
-    <div id="vt-2w" class="blk"><span id="vt-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak panas</span></div>
+    <div id="vt-row" class="blk prow"><span id="vt-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak berpeluh</span><span id="vt-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Tak panas</span></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
@@ -46,7 +45,7 @@
     tl.to(["#vt-w1", "#vt-w2", "#vt-w3"], { x: 26, duration: 1.4, ease: "sine.inOut", stagger: 0.1 }, 2.2);
     tl.fromTo("#vt-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 3.34);
     tl.fromTo("#vt-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 4.44);
-    tl.to(["#vt-air", "#vt-1w", "#vt-2w"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 5.23);
+    tl.to(["#vt-air", "#vt-row"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 5.23);
     window.__timelines["vent"] = tl;
   </script>
 </template>
