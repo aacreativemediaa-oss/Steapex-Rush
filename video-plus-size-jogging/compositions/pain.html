@@ -31,15 +31,14 @@
     #pn-1w { top: 320px; }
     #pn-2w { top: 410px; }
     #pn-t { top: 320px; }
-    #pn-t1 { font-size: 72px; }
-    #pn-t2 { font-size: 80px; margin-top: 6px; }
+    #pn-t { font-size: 66px; white-space: nowrap; }
+    #pn-t .hl { padding: 6px 14px 4px; }
   </style>
   <div id="root" data-composition-id="pain" data-width="1080" data-height="1920">
     <div id="pn-1w" class="blk"><span id="pn-1" class="pill risk"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#fff"/><path d="M24 17v13" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#E8322B"/></svg>Tumit pedih</span></div>
     <div id="pn-2w" class="blk"><span id="pn-2" class="pill risk"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#fff"/><path d="M24 17v13" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#E8322B"/></svg>Lutut lenguh</span></div>
     <div id="pn-t" class="blk anton">
-      <span id="pn-t1" class="ln">KASUT KORANG</span>
-      <span id="pn-t2" class="ln"><span class="hl">TAK SUPPORT!</span></span>
+<span id="pn-t1">KASUT KORANG </span><span id="pn-t2" class="hl">TAK SUPPORT!</span>
     </div>
   </div>
   <script>
@@ -49,7 +48,7 @@
     tl.fromTo("#pn-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 4.46);
     tl.to(["#pn-1w", "#pn-2w"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 10.2);
     tl.fromTo("#pn-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 10.44);
-    tl.fromTo("#pn-t2", { opacity: 0, scale: 1.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.3, ease: "expo.out" }, 12.0);
+    tl.fromTo("#pn-t2", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 12.0);
     [[12, -6], [-9, 5], [6, 6], [-3, -2], [0, 0]].forEach(([x, y], i) => tl.to("#pn-t2", { x, y, duration: 0.05, ease: "none" }, 12.05 + i * 0.05));
     tl.to("#pn-t", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 12.45);
     window.__timelines["pain"] = tl;

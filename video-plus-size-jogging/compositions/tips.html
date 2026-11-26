@@ -30,14 +30,14 @@
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
     #tp-stkw { top: 250px; }
     #tp-t { top: 360px; }
-    #tp-t1 { font-size: 80px; }
-    #tp-t2 { font-size: 76px; margin-top: 4px; }
+    #tp-t { font-size: 66px; white-space: nowrap; }
+    #tp-t .hl { padding: 6px 14px 4px; }
+    #tp-t1, #tp-t2 { display: inline-block; }
   </style>
   <div id="root" data-composition-id="tips" data-width="1080" data-height="1920">
     <div id="tp-stkw" class="blk"><span id="tp-stk" class="sub"><svg viewBox="0 0 48 48"><path d="M24 4a14 14 0 0 0-8 25.5V35h16v-5.5A14 14 0 0 0 24 4z" fill="#ffd400" stroke="#151515" stroke-width="3"/><rect x="17" y="38" width="14" height="6" rx="2" fill="#151515"/></svg>TIPS!</span></div>
     <div id="tp-t" class="blk anton">
-      <span id="tp-t1" class="ln">CUSHION <span class="hl">TEBAL</span></span>
-      <span id="tp-t2" class="ln">&amp; SUPPORTIVE</span>
+<span id="tp-t1">CUSHION <span class="hl">TEBAL</span></span> <span id="tp-t2">&amp; SUPPORTIVE</span>
     </div>
   </div>
   <script>
@@ -45,7 +45,7 @@
     // Scene starts 17.5 s. "tips" 17.98 (0.48); "cushion" 19.32 (1.82); "supportive" 20.32 (2.82)
     tl.fromTo("#tp-stk", { opacity: 0, scale: 0.55, rotation: -4 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: "back.out(1.8)" }, 0.48);
     tl.fromTo("#tp-t1", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 1.82);
-    tl.fromTo("#tp-t2", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 2.82);
+    tl.fromTo("#tp-t2", { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.3, ease: "power4.out" }, 2.82);
     tl.to(["#tp-stkw", "#tp-t"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 5.33);
     window.__timelines["tips"] = tl;
   </script>

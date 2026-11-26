@@ -30,13 +30,13 @@
     .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
     #ct-lsw { top: 320px; }
     #ct-cardw { top: 340px; }
-    #ct-card { display: inline-block; background: #fff; border-radius: 34px; padding: 30px 48px 36px; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    #ct-card { display: inline-block; white-space: nowrap; background: #fff; border-radius: 34px; padding: 24px 44px 28px; box-shadow: 0 20px 60px rgba(0,0,0,.45); }
     #ct-g1 { font-family: "Anton"; font-size: 80px; line-height: 1.05; color: var(--dark); text-transform: uppercase; }
     #ct-g2 { font-family: "Anton"; font-size: 80px; line-height: 1.05; color: var(--red); text-transform: uppercase; }
   </style>
   <div id="root" data-composition-id="cta" data-width="1080" data-height="1920">
     <div id="ct-lsw" class="blk"><span id="ct-ls" class="pill risk"><svg viewBox="0 0 48 48"><path d="M24 4 46 43H2z" fill="#fff"/><path d="M24 17v13" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/><circle cx="24" cy="36" r="3" fill="#E8322B"/></svg>Banyak size dah low stock!</span></div>
-    <div id="ct-cardw" class="blk"><div id="ct-card"><div id="ct-g1">CHECK OUT</div><div id="ct-g2">TERUS!</div></div></div>
+    <div id="ct-cardw" class="blk"><div id="ct-card"><span id="ct-g1">CHECK OUT </span><span id="ct-g2">TERUS!</span></div></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
