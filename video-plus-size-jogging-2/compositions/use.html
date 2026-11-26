@@ -1,0 +1,49 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #us-row { top: 320px; gap: 10px; }
+    #us-row .pill { padding-right: 18px; }
+    /* one row first; a pill that does not fit wraps to a second row */
+    .prow { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .prow .pill { margin: 0; }
+  </style>
+  <div id="root" data-composition-id="use" data-width="1080" data-height="1920">
+    <div id="us-row" class="blk prow"><span id="us-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Bersukan<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><circle cx="27" cy="7" r="4" fill="#151515"/><path d="M26 15l-6 12 6 6v12M20 27l-8 4M26 17l8 8 7-2M26 33l-8 12"/></g></svg></span><span id="us-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Kerja<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="5" y="15" width="38" height="26" rx="4"/><path d="M17 15v-5h14v5M5 26h38"/></g></svg></span><span id="us-3" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Travel<svg viewBox="0 0 48 48"><g fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"><rect x="10" y="14" width="28" height="26" rx="4"/><path d="M18 14V8h12v6M16 40v4M32 40v4"/></g></svg></span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 26.0 s. "bersukan" 26.94 (0.94); "kerja" 27.58 (1.58); "travel" 28.56 (2.56)
+    tl.fromTo("#us-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.94);
+    tl.fromTo("#us-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 1.58);
+    tl.fromTo("#us-3", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.56);
+    tl.to(["#us-row"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 2.95);
+    window.__timelines["use"] = tl;
+  </script>
+</template>

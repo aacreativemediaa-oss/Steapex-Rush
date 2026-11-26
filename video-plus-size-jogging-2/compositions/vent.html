@@ -1,0 +1,49 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #vt-air { top: 340px; height: 110px; }
+    #vt-air svg { display: block; margin: 0 auto; width: 300px; height: 110px; overflow: visible; }
+    /* one row first; a pill that does not fit wraps to a second row */
+    .prow { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .prow .pill { margin: 0; }
+  </style>
+  <div id="root" data-composition-id="vent" data-width="1080" data-height="1920">
+    <div id="vt-air" class="blk" data-layout-allow-overflow><svg viewBox="0 0 300 110"><g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round">
+      <path id="vt-w1" d="M10 30h170a22 22 0 1 0-22-22"/><path id="vt-w2" d="M10 60h230a20 20 0 1 1-20 20"/><path id="vt-w3" d="M10 90h120"/></g></svg></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 22.6 s. "ventilation" 24.36 (1.76)
+    tl.fromTo(["#vt-w1", "#vt-w2", "#vt-w3"], { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.1 }, 1.76);
+    tl.to(["#vt-w1", "#vt-w2", "#vt-w3"], { x: 26, duration: 1.0, ease: "sine.inOut", stagger: 0.1 }, 2.25);
+    tl.to("#vt-air", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 3.23);
+    window.__timelines["vent"] = tl;
+  </script>
+</template>
