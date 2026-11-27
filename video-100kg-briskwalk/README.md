@@ -1,6 +1,6 @@
 # 100KG Nak Start Briskwalk? — Steapex Surge (HyperFrames, Format A dengan VO)
 
-- `index.html` — root: 9 klip (footage penuh, tanpa zoom), 7 scene grafik, caption, overlay (bar progres + kilatan putih), VO, SFX
+- `index.html` — root: 10 klip (footage penuh, tanpa zoom), 7 scene grafik, caption, overlay (bar progres + kilatan putih), VO, SFX
 - `compositions/` — `hook`, `padat`, `empuk`, `bounce`, `flex`, `restock`, `cta`, `captions`, `overlay`
 - `assets/vo/new-vo.wav` — VO asal (dari `New VO`, tidak diubah)
 - `transcript.json` — transkrip dibetulkan (asal Whisper: `transcript.whisper-raw.json`)
