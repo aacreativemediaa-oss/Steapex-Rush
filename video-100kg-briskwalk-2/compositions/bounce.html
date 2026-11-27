@@ -1,0 +1,64 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #bn-t { top: 320px; font-size: 80px; white-space: nowrap; }
+    #bn-num { display: inline-block; color: #c6ff00; }
+    #bn-spring { top: 440px; height: 190px; }
+    #bn-spring svg { display: block; margin: 0 auto; width: 160px; height: 190px; overflow: visible; }
+    #bn-row { top: 320px; }
+    .prow { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .prow .pill { margin: 0; }
+  </style>
+  <div id="root" data-composition-id="bounce" data-width="1080" data-height="1920">
+    <div id="bn-t" class="blk anton"><span id="bn-num">70%</span> <span class="hl">ENERGY RETURN</span></div>
+    <div id="bn-spring" class="blk" data-layout-allow-overflow><svg viewBox="0 0 160 190">
+      <g id="bn-coil"><path d="M30 150 L130 132 L30 114 L130 96 L30 78 L130 60 L30 42" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <rect id="bn-plate" x="10" y="16" width="140" height="22" rx="10" fill="#EADFCB" stroke="#fff" stroke-width="4"/>
+      <rect x="10" y="152" width="140" height="22" rx="10" fill="#fff"/>
+    </svg></div>
+    <div id="bn-row" class="blk prow"><span id="bn-1" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Jimat tenaga<svg viewBox="0 0 48 48"><path d="M27 4 10 27h12l-3 17 19-25H26z" fill="#ffd400" stroke="#151515" stroke-width="3" stroke-linejoin="round"/></svg></span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 22.4 s (bouncing shot). "spring" 22.56 (0.16); "jimat" 24.90 (2.5)
+    tl.fromTo("#bn-t", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.16);
+    tl.fromTo("#bn-spring", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.3, ease: "power4.out" }, 0.24);
+    [0.6, 1.4].forEach((t) => {
+      tl.to("#bn-coil", { scaleY: 0.55, svgOrigin: "80 150", duration: 0.18, ease: "power2.in" }, t);
+      tl.to("#bn-plate", { y: 50, duration: 0.18, ease: "power2.in" }, t);
+      tl.to("#bn-coil", { scaleY: 1, svgOrigin: "80 150", duration: 0.45, ease: "elastic.out(1, 0.4)" }, t + 0.18);
+      tl.to("#bn-plate", { y: 0, duration: 0.45, ease: "elastic.out(1, 0.4)" }, t + 0.18);
+    });
+    tl.to(["#bn-t", "#bn-spring"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 2.3);
+    tl.fromTo("#bn-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.5);
+    tl.to("#bn-row", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 3.63);
+    window.__timelines["bounce"] = tl;
+  </script>
+</template>

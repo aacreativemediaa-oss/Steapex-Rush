@@ -1,0 +1,57 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #rs-sw { top: 240px; height: 120px; }
+    #rs-dot { display: block; margin: 0 auto; width: 84px; height: 84px; border-radius: 42px; background: var(--beige); border: 6px solid #fff; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    #rs-lbl { display: block; margin-top: 8px; text-shadow: 0 2px 8px rgba(0,0,0,.8); }
+    #rs-name { top: 370px; font-size: 80px; }
+    #rs-name .b { color: var(--beige); }
+    #rs-stw { top: 480px; }
+    /* second line smaller than the headline */
+    #rs-st { display: inline-block; background: var(--red); color: #fff; font-family: "Anton"; font-size: 64px; line-height: 1.12; text-transform: uppercase;
+      padding: 6px 34px 8px; border-radius: 16px; border: 6px solid #fff; box-shadow: 0 16px 44px rgba(0,0,0,.45); }
+  </style>
+  <div id="root" data-composition-id="restock" data-width="1080" data-height="1920">
+    <div id="rs-sw" class="blk"><span id="rs-dot"></span><span id="rs-lbl" class="lbl">Beige</span></div>
+    <div id="rs-name" class="blk anton">WARNA <span class="b">BEIGE</span></div>
+    <div id="rs-stw" class="blk"><span id="rs-st">DAH RESTOCK!</span></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 32.35 s. "Warna" 32.70 (0.35); "dah restock" 33.42 (1.07)
+    tl.fromTo("#rs-dot", { scale: 0 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.37);
+    tl.fromTo("#rs-lbl", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.5);
+    tl.fromTo("#rs-name", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.4);
+    tl.fromTo("#rs-st", { opacity: 0, scale: 2.2, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.28, ease: "expo.out" }, 1.1);
+    [[14, -8], [-10, 6], [7, 8], [-5, -4], [0, 0]].forEach(([x, y], i) => tl.to("#rs-stw", { x, y, duration: 0.05, ease: "none" }, 1.15 + i * 0.05));
+    tl.to(["#rs-sw", "#rs-name", "#rs-stw"], { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 4.88);
+    window.__timelines["restock"] = tl;
+  </script>
+</template>

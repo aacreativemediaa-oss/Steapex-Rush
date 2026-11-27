@@ -20,6 +20,12 @@ Tambahan kepada *Format Edit Video* (PDF). Kemaskini ini mengatasi format asal j
    - **Alternatif:** `lv_0_20260719163435.mp4` (proxy `beige-track.mp4`), **saat 39.5 – 47.5**: kaki memijak dan menekan kasut atas tikar di trek.
    - Gantikan shot tangan tekan foam (`beige-unbox` 3.7 s) untuk babak foam / empuk / selesa / shock absorption.
 
+## Kemaskini 27 Nov 2026
+- **Caption di kedudukan paling bawah zon selamat TikTok:** `.cg { top: 1196px }` → teks caption y 1201–1234 px (had bawah 1248 px). Semak dengan `check --safe-zone tiktok`.
+- **Guna footage berbeza** untuk setiap video baru: jangan ulang klip/saat yang sama dari video sebelum ini (warna kasut lain boleh untuk shot USP; babak restock mesti warna yang disebut).
+- **SFX lebih perlahan lagi:** 0.36 × paras asal (cth. pop 0.108, impact 0.16).
+- **Bunyi asal footage kedengaran sikit:** −42 LUFS setiap klip (bukan −57).
+
 ## Fakta produk
 - **Nama kasut: Steapex Surge** (bukan "Steapex Rush"; Whisper selalu salah dengar nama ini, jadi semak setiap kali).
 
