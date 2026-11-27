@@ -1,0 +1,65 @@
+<template>
+  <style>
+    @font-face { font-family: "Anton"; src: url("assets/fonts/Anton-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: visible;
+      --red: #E8322B; --ink: #ffffff; --dark: #151515; --beige: #EADFCB; --green: #22B35E;
+      font-family: "Montserrat", sans-serif; color: var(--ink); }
+    .blk { position: absolute; left: 120px; width: 768px; text-align: center; }
+    .low { left: 120px; width: 660px; }
+    .ln { display: block; }
+    /* Anton: headline, captions, numbers, scene titles */
+    .anton { font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase; line-height: 1.08; letter-spacing: 0.01em;
+      text-shadow: 0 6px 24px rgba(0,0,0,.55), 0 2px 4px rgba(0,0,0,.6); }
+    .hl { display: inline-block; background: var(--red); color: #fff; padding: 10px 20px 6px; line-height: 1.12; border-radius: 10px; text-shadow: none;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    /* Sub-headline / sticker: 47px on a block */
+    .sub { display: inline-block; background: #fff; color: var(--dark); font-family: "Montserrat"; font-weight: 900; font-size: 47px; line-height: 1.15;
+      padding: 12px 28px 14px; border-radius: 18px; box-shadow: 0 12px 34px rgba(0,0,0,.4); text-shadow: none; }
+    .sub svg { width: 46px; height: 46px; vertical-align: -8px; margin-right: 10px; }
+    /* Numbered education badge */
+    .badge { position: absolute; top: 296px; left: 449px; width: 110px; height: 110px; border-radius: 55px; background: var(--red); border: 6px solid #fff;
+      font-family: "Anton"; font-size: 64px; line-height: 96px; text-align: center; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Pills: check (white) and risk (red) */
+    .pill { display: inline-flex; align-items: center; gap: 12px; font-family: "Montserrat"; font-weight: 800; font-size: 40px; line-height: 1.1;
+      padding: 12px 26px 14px 16px; border-radius: 44px; margin: 8px 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); text-shadow: none; }
+    .pill.ok { background: #fff; color: var(--dark); }
+    .pill.risk { background: var(--red); color: #fff; }
+    .pill svg { width: 48px; height: 48px; flex: none; }
+    /* Small labels (chips, zone labels, colour name): 19px */
+    .lbl { font-family: "Montserrat"; font-weight: 900; font-size: 19px; letter-spacing: .14em; text-transform: uppercase; }
+    .note { font-family: "Montserrat"; font-weight: 800; font-size: 24px; }
+    #pd-row { top: 320px; }
+    /* one row first; a pill that does not fit wraps to a second row */
+    .prow { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    .prow .pill { margin: 0; }
+    #pd-t { top: 320px; font-size: 80px; white-space: nowrap; }
+    #pd-t1, #pd-t2 { display: inline-block; }
+    #pd-rip { top: 470px; height: 200px; }
+    #pd-rip svg { display: block; margin: 0 auto; width: 520px; height: 200px; overflow: visible; }
+  </style>
+  <div id="root" data-composition-id="padat" data-width="1080" data-height="1920">
+    <div id="pd-row" class="blk prow"><span id="pd-1" class="pill risk"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#fff"/><path d="M15 15l18 18M33 15L15 33" stroke="#E8322B" stroke-width="5" stroke-linecap="round"/></svg>Kosong lembik</span><span id="pd-2" class="pill ok"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#22B35E"/><path d="M13 25l7 7 15-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>Padat</span></div>
+    <div id="pd-t" class="blk anton"><span id="pd-t1">SERAP</span> <span id="pd-t2"><span class="hl">HENTAKAN</span></span></div>
+    <div id="pd-rip" class="blk" data-layout-allow-overflow><svg viewBox="0 0 520 200">
+      <g id="pd-arrows" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M200 0v40M186 26l14 16 14-16"/><path d="M260 0v40M246 26l14 16 14-16"/><path d="M320 0v40M306 26l14 16 14-16"/></g>
+      <ellipse id="pd-r1" opacity="0" cx="260" cy="150" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="6"/>
+      <ellipse id="pd-r2" opacity="0" cx="260" cy="150" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="5"/>
+      <ellipse id="pd-r3" opacity="0" cx="260" cy="150" rx="60" ry="12" fill="none" stroke="#fff" stroke-width="4"/>
+    </svg></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Scene starts 7.0 s. "kosong" 9.36 (2.36); "padat" 10.60 (3.6); "serap" 11.30 (4.3); "hentakan" 11.56 (4.56)
+    tl.fromTo("#pd-1", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.36);
+    tl.fromTo("#pd-2", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 3.6);
+    tl.to("#pd-row", { opacity: 0, filter: "blur(8px)", duration: 0.12, ease: "power2.in" }, 4.15);
+    tl.fromTo("#pd-t1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 4.3);
+    tl.fromTo("#pd-t2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 4.4);
+    tl.fromTo("#pd-arrows", { opacity: 0, y: -30 }, { opacity: 1, y: 20, duration: 0.3, ease: "power3.in" }, 4.4);
+    [["#pd-r1", 4.6], ["#pd-r2", 4.75], ["#pd-r3", 4.9]].forEach(([s, t]) =>
+      tl.fromTo(s, { opacity: 0.95, attr: { rx: 50, ry: 10 } }, { opacity: 0, attr: { rx: 250, ry: 40 }, duration: 0.3, ease: "power2.out", immediateRender: false }, t));
+    tl.to(["#pd-t", "#pd-rip"], { opacity: 0, filter: "blur(8px)", duration: 0.1, ease: "power2.in" }, 5.08);
+    window.__timelines["padat"] = tl;
+  </script>
+</template>
